@@ -1,0 +1,18 @@
+Node.js is a JS runtime run on server side using Google Chrome's V8 Engine.
+Used for fast and scalable data driven apps. It is a single threaded, non blocking I/O model,  event driven.
+
+
+Event driven architecture means any significant action emits an event. Event loop then picks up thes events and calls respective callback functions.
+
+Synchronous code is blocking code as its executed line by line. Every file is treated as a module. NOde.js is dependent on V8 and Libuv(C++ based f/w). Libuv provides a thread pool where heavy and time consuming tasks are offloaded so as to not block the single main thread.
+
+---------------------------------------------------------------------
+
+Dependencies can be normal or development/code dependencies. The 2nd type of dependencies are just for development purpose like webpack whereas the 1st type are required for functioning of the app like express framework. For local dependencies, we define scripts in package.json that can be run with npm.
+
+---------------------------------------------------------------------
+
+Static vs Dynamic vs API:
+Static sites have readymade html, css, js files on the server that just need to be fetched for the frontend browser to render. Dyanmic sites usually take data from a DB(mongoDB), generate the website using this dynamic data and some templates and then fetches these over the internet to client(this is called server side rendering where we prep the html, css, js dynamically based on data from db). API based sites only have to get data from DB on the server side, and send this raw data to client side where its used to form the final code to be rendered using frameworks/libraries like React/Vue(here server side consists of only retrieving data from DB and building the API to send th data to client side where its called as consuming API).
+
+API based apps can be used to send this same data to different types of apps and not just browsers. With server side rendereing of dynamic sites, we are stuck with only rendered pages that can be only sent to a browser.
