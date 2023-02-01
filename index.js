@@ -92,3 +92,5 @@ const server = http.createServer((req, resp) => {
 server.listen(8000, "127.0.0.1", () => {
     console.log("Listening for request");
 });
+
+console.log(arguments);

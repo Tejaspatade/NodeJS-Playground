@@ -2,13 +2,26 @@ Node.js is a JS runtime run on server side using Google Chrome's V8 Engine.
 Used for fast and scalable data driven apps. It is a single threaded, non blocking I/O model,  event driven.
 
 
-Event driven architecture means any significant action emits an event. Event loop then picks up thes events and calls respective callback functions.
+Event driven architecture means any significant action leads to an event emitter emitting an event. Event loop then picks up thes events and calls respective callback functions attached to them.
 
-Synchronous code is blocking code as its executed line by line. Every file is treated as a module. NOde.js is dependent on V8 and Libuv(C++ based f/w). Libuv provides a thread pool where heavy and time consuming tasks are offloaded so as to not block the single main thread.
+Synchronous code is blocking code as its executed line by line. Every file is treated as a module. Node.js is dependent on V8 and Libuv(C++ based f/w). Libuv provides a thread pool where heavy and time consuming tasks are offloaded so as to not block the single main thread.
 
 ---------------------------------------------------------------------
 
 Dependencies can be normal or development/code dependencies. The 2nd type of dependencies are just for development purpose like webpack whereas the 1st type are required for functioning of the app like express framework. For local dependencies, we define scripts in package.json that can be run with npm.
+
+---------------------------------------------------------------------
+
+Streams are used to read/write data piece by piece without completing whole operation meaning without keeping all data in memory. We continously keep on reading chunks of data from a readable stream, every time theres more data available, the data event is emitted.
+
+---------------------------------------------------------------------
+
+require():
+1. Resolve & load the module: Check in core modules, developer modules if specified relative path like ./ and finally searched in npm node-modules/
+2. Wrapped: wrapped in IIFE where certain objs are passed in. Used to achieve private scope for all modules.
+3. Execution.
+4. Returns exports
+5. Caching.
 
 ---------------------------------------------------------------------
 
