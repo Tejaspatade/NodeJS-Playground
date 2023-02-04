@@ -52,3 +52,9 @@ response.status(code): Status code. 200 -> OK, 201 -> Created, 204 -> No Content
 response.json(): Send JSON data.
 
 Note: Include Version for API in url so that newer versions dont break app that use the older version.
+
+Request Response life cycle starts when client generates a request. The req and res objs are instatntiated that pass thru all the middleware and finally send back the response with the last middleware which is the router.
+
+Middleware: Functions executed before we recieve request and send a response. Usually used to parse body, logging in functionality, setting headers, routing, etc.  They are altogether called middleware stack.
+
+We can add more to the middleware stack using app.use((req, res, next) => {}).
