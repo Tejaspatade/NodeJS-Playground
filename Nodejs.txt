@@ -29,3 +29,21 @@ Static vs Dynamic vs API:
 Static sites have readymade html, css, js files on the server that just need to be fetched for the frontend browser to render. Dyanmic sites usually take data from a DB(mongoDB), generate the website using this dynamic data and some templates and then fetches these over the internet to client(this is called server side rendering where we prep the html, css, js dynamically based on data from db). API based sites only have to get data from DB on the server side, and send this raw data to client side where its used to form the final code to be rendered using frameworks/libraries like React/Vue(here server side consists of only retrieving data from DB and building the API to send th data to client side where its called as consuming API).
 
 API based apps can be used to send this same data to different types of apps and not just browsers. With server side rendereing of dynamic sites, we are stuck with only rendered pages that can be only sent to a browser.
+
+---------------------------------------------------------------------
+
+API & REST: 
+Piece of s/w used by another s/w to allow applications to communicate.
+REST stands for REpresentational State Transfer. An API following REST principles is called as a RESTful API. 
+
+Principles:
+1. Separate API into Logical resources: Resources are objs w/ data associated to them. Any named info is a resource.
+2. Expose structured resource-based URLs: Based on all resources identified, each resource should be made available(exposed) using a well structured URL.
+3. Use appropriate Http methods to perform actions: Only have resources in endpoint URL and use the HTTP requests to define the type of action to be performed with the resource.
+4. Send data as JSON: Use JS Object Notation format when sending/recieving data. Before sending data however, we perform some response formatting like the JSend format.
+5. Be stateless: State is any data about the app that may change over time. All state should be handled on the client side. Server should not be concerned with the state of the app at all.
+
+---------------------------------------------------------------------
+
+Express:
+Import Expresss, invoke it express() and store it in an obj. Use the object for different types of requests like GET,POST,DELETE,PUT,PATCH,etc. Finally invoke listen(port no, callback) on object to initialise server.
