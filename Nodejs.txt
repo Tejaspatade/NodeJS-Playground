@@ -47,3 +47,8 @@ Principles:
 
 Express:
 Import Expresss, invoke it express() and store it in an obj. Use the object for different types of requests like GET,POST,DELETE,PUT,PATCH,etc. Finally invoke listen(port no, callback) on object to initialise server.
+
+response.status(code): Status code. 200 -> OK, 201 -> Created, 204 -> No Content, 404 -> Error
+response.json(): Send JSON data.
+
+Note: Include Version for API in url so that newer versions dont break app that use the older version.
