@@ -64,3 +64,13 @@ We can add more to the middleware stack using app.use((req, res, next) => {}).
 Env Variables:
 Development
 Production
+
+---------------------------------------------------------------------
+
+Mongoose:
+Object Data Modelling library. Code that can interact with mongodb.
+1. Schema: Structure with default values, conditionals and validations.
+2. Model: wrapper with interface for querying database. Like classes that are a blueprint. Used to create documents and then perform CRUD on them.
+We use schema obj to make a model which is then used to create documents.
+ORM Driver for connecting  mongoDB to node/express. 
+mongoose.connect()
