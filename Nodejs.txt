@@ -67,7 +67,11 @@ Middleware: Functions executed before we recieve request and send a response. Us
 
 We can add more to the middleware stack using app.use((req, res, next) => {}). But we always need to invoke next() in the end of it otherwise the request response cycle is stuck.
 
+Note: Middlewares shouldn't send a response and invoke next() at the same time, if we want to modify the res in a middleware, instead return the res.send() rather just invoking res.send() because that will mean two different responses are being attempted to be sent which is not valid and throws an error.
+
 express.Route() is used to make an separate router for a single resource. Mounting a router is the process of making this individual router and using it for a specific resource URL. 
+
+A param middleware is used to process requests that are gonna have some paramater passed in like the id of a resource to retrieve that one item. Use route.param("param_name", (req, res, next, val) => {}) to use this middleware for a certain param. 
 
 ---------------------------------------------------------------------
 
