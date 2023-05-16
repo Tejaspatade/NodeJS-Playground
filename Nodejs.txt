@@ -81,9 +81,17 @@ process.env stores all environment variables. Express uses the NODE_ENV var whic
 ---------------------------------------------------------------------
 
 Mongoose:
-Object Data Modelling library. Code that can interact with mongodb.
-1. Schema: Structure with default values, conditionals and validations.
-2. Model: wrapper with interface for querying database. Like classes that are a blueprint. Used to create documents and then perform CRUD on them.
-We use schema obj to make a model which is then used to create documents.
-ORM Driver for connecting  mongoDB to node/express. 
+Object Data Modelling library. Code that can interact with mongodb. Middle-man between Node-Express and MongoDB.
 mongoose.connect()
+
+1. Schema: Structure with default values, conditionals and validations. Schema uses the native JavaScript DataTypes for type specification. We create a new schema using new mongoose.Schema({
+    property: {
+        type: datatype,
+        required: [true/false, 'Error Message'],
+        default: value,
+        unique: true/false
+    },
+})
+
+2. Model: wrapper with interface for querying database. Like classes that are a blueprint. Used to create documents and then perform CRUD on them. mongoose.model('name', schema_obj)
+We use schema obj to make a model which is then used to create documents. 
