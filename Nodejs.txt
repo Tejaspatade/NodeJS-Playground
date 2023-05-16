@@ -76,8 +76,7 @@ A param middleware is used to process requests that are gonna have some paramate
 ---------------------------------------------------------------------
 
 Env Variables:
-Development
-Production
+process.env stores all environment variables. Express uses the NODE_ENV var which isnt defined by it. Thus, we need to specify it. We used dotenv library, to specify it in a config.env file and which then gets stored onto the process.env object. dotenv.config({path:'pathname'}) is used to specify the path to the .env file that needs to be stored onto the process.env object.
 
 ---------------------------------------------------------------------
 
