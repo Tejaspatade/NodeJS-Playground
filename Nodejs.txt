@@ -48,16 +48,26 @@ Principles:
 Express:
 Import Expresss, invoke it express() and store it in an obj. Use the object for different types of requests like GET,POST,DELETE,PUT,PATCH,etc. Finally invoke listen(port no, callback) on object to initialise server.
 
+app.get() -> Get 1 or all resources on url specified. Send no. of results when sending multiple. Check if id is valid for getting only 1 specific item.
+app.post() -> Add new item to resource url. Send back the data added as well. 201 code
+
 response.status(code): Status code. 200 -> OK, 201 -> Created, 204 -> No Content, 400 -> Bad Request, 404 -> Error, 500 -> Internal Server Error
 response.json(): Send JSON data.
 
+Use the app.route("url") to specify the url, then chain all request types on it that use the same url to avoid repetition.
+
 Note: Include Version for API in url so that newer versions dont break app that use the older version.
+
+Routes are the urls you will use in the request. Route handlers are the callback functions to be invoked for a specific request that gets passed the req and res objects. These req and res objs are what you will use to retrieve any info abt the req and send back the relevant response.
+
 
 Request Response life cycle starts when client generates a request. The req and res objs are instatntiated that pass thru all the middleware and finally send back the response with the last middleware which is the router.
 
-Middleware: Functions executed before we recieve request and send a response. Usually used to parse body, logging in functionality, setting headers, routing, etc.  They are altogether called middleware stack.
+Middleware: Functions executed before we recieve request and send a response. Usually used to parse body, logging in functionality, setting headers, routing, etc.  They are altogether called middleware stack. Route Handlers that we define are also middlewares but they are just executed for a specific type of request on a specific route & not all of them. These route handlers are always the last one in the middleware stack because they finally send a response. All other middlewares perform certain operations and then invoke the next() function that passes req res obj to next middleware in the stack.
 
-We can add more to the middleware stack using app.use((req, res, next) => {}).
+We can add more to the middleware stack using app.use((req, res, next) => {}). But we always need to invoke next() in the end of it otherwise the request response cycle is stuck.
+
+express.Route() is used to make an separate router for a single resource. Mounting a router is the process of making this individual router and using it for a specific resource URL. 
 
 ---------------------------------------------------------------------
 
