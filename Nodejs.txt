@@ -103,3 +103,11 @@ This model can be used to do all sorts of CRUD operations on MongoDB using its m
 -> Model.findById(id): Finds the document matching to id given and returns it.
 -> Model.findByIdAndUpdate(id, obj, options): Finds the document matching to id given and updates with properties of obj passed in and takes 3rd argument for optional parameters.
 -> Model.findByIdAndDelete(id): Delete obj based on passed id.
+-> Model.countDocuments(): Count no. of documents in the collection.
+-> Model.sort(): Sort based on field name/s passed to it separated by a whitespace.
+-> Model.select(): Select specific fields for each document to be returned in the result rather than the entire object.
+-> Model.skip(): Skip no. of documents
+-> Model.limit(): Limit no. of documents that would be returned per request.
+
+All such functions return a query and if we await a response on this query it is executed on MongoDB and result is returned. Thus, we can chain a several number of these functions to define complex queries. 
+APIs need several features like pagination, field selection, sorting results, filtering results based on field values, etc which can be done by using parameters passed in to req.query from URL. This is perfect example where chaining the mongoose mthods specified above and then finally await on the query to get the resultant documents.
