@@ -95,3 +95,11 @@ mongoose.connect()
 
 2. Model: wrapper with interface for querying database. Like classes that are a blueprint. Used to create documents and then perform CRUD on them. mongoose.model('name', schema_obj)
 We use schema obj to make a model which is then used to create documents. 
+
+This model can be used to do all sorts of CRUD operations on MongoDB using its methods like:
+-> Model.find(): Find by querying all documents. Converts result into array of objects.
+-> Model.create({}): Create new Document in collection of the model's name with all the data passed in.
+-> Model.findOne({prop:val}): Find one document based on property that matches value given.
+-> Model.findById(id): Finds the document matching to id given and returns it.
+-> Model.findByIdAndUpdate(id, obj, options): Finds the document matching to id given and updates with properties of obj passed in and takes 3rd argument for optional parameters.
+-> Model.findByIdAndDelete(id): Delete obj based on passed id.
