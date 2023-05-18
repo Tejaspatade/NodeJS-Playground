@@ -91,6 +91,12 @@ mongoose.connect()
         unique: true/false
     },
 })
+Schema.virtual(prop_name).get(callback): create a virtual property that isn't stored in DB. It is created and its value is computed everytime we try to retrieve data from DB of this schema. They are used for derived properties to save storage space. If they can just be simply derived from other prpoperties, they dont need to saved into the DB.
+
+Schema can also have middleware just like routes in the Request-Response Life-Cycle do. The middleware can be invoked either before or after a certain type of hook has happened. pre() for before and post() for after. These methods take the hook as an argument and the function to be excuted. These functions are also passed the next function and need to invoke it to continue the cycle. Hooks : find, save, delete, update. These middleware are of 3 types:
+-> Document - middleware for document related hooks, save, etc.
+-> Query - middleware for query execution related hooks, find, findByIdAndDelete, etc.
+-> Aggregate
 
 2. Model: wrapper with interface for querying database. Like classes that are a blueprint. Used to create documents and then perform CRUD on them. mongoose.model('name', schema_obj)
 We use schema obj to make a model which is then used to create documents. 
@@ -110,7 +116,7 @@ This model can be used to do all sorts of CRUD operations on MongoDB using its m
 -> Model.aggregate([]): Create the MongoDb aggregate pipeline which can have the stages as objects in array passed as argument to function.
 
 All such functions return a query and if we await a response on this query it is executed on MongoDB and result is returned. Thus, we can chain a several number of these functions to define complex queries. 
-APIs need several features like pagination, field selection, sorting results, filtering results based on field values, etc which can be done by using parameters passed in to req.query from URL. This is perfect example where chaining the mongoose mthods specified above and then finally await on the query to get the resultant documents.
+APIs need several features like pagination, field selection, sorting results, filtering results based on field values, etc which can be done by using parameters passed in to req.query from URL. This is perfect example where chaining the mongoose methods specified above and then finally await on the query to get the resultant documents.
 
 We can make some alias resources available by adding a middleware for this aliased route that would add on all the requirements of this aliased resource point to the request obj so that they can be used when the response is being generated. EX: /top-5-tours can be passed thru a middleware that would add all query parameters to request object to get top 5 tours which will then be sen back as response by the final route handler.
 
