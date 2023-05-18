@@ -60,7 +60,6 @@ Note: Include Version for API in url so that newer versions dont break app that 
 
 Routes are the urls you will use in the request. Route handlers are the callback functions to be invoked for a specific request that gets passed the req and res objects. These req and res objs are what you will use to retrieve any info abt the req and send back the relevant response.
 
-
 Request Response life cycle starts when client generates a request. The req and res objs are instatntiated that pass thru all the middleware and finally send back the response with the last middleware which is the router.
 
 Middleware: Functions executed before we recieve request and send a response. Usually used to parse body, logging in functionality, setting headers, routing, etc.  They are altogether called middleware stack. Route Handlers that we define are also middlewares but they are just executed for a specific type of request on a specific route & not all of them. These route handlers are always the last one in the middleware stack because they finally send a response. All other middlewares perform certain operations and then invoke the next() function that passes req res obj to next middleware in the stack.
@@ -108,6 +107,10 @@ This model can be used to do all sorts of CRUD operations on MongoDB using its m
 -> Model.select(): Select specific fields for each document to be returned in the result rather than the entire object.
 -> Model.skip(): Skip no. of documents
 -> Model.limit(): Limit no. of documents that would be returned per request.
+-> Model.aggregate([]): Create the MongoDb aggregate pipeline which can have the stages as objects in array passed as argument to function.
 
 All such functions return a query and if we await a response on this query it is executed on MongoDB and result is returned. Thus, we can chain a several number of these functions to define complex queries. 
 APIs need several features like pagination, field selection, sorting results, filtering results based on field values, etc which can be done by using parameters passed in to req.query from URL. This is perfect example where chaining the mongoose mthods specified above and then finally await on the query to get the resultant documents.
+
+We can make some alias resources available by adding a middleware for this aliased route that would add on all the requirements of this aliased resource point to the request obj so that they can be used when the response is being generated. EX: /top-5-tours can be passed thru a middleware that would add all query parameters to request object to get top 5 tours which will then be sen back as response by the final route handler.
+
