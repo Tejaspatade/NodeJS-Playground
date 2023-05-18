@@ -96,7 +96,7 @@ Schema.virtual(prop_name).get(callback): create a virtual property that isn't st
 Schema can also have middleware just like routes in the Request-Response Life-Cycle do. The middleware can be invoked either before or after a certain type of hook has happened. pre() for before and post() for after. These methods take the hook as an argument and the function to be excuted. These functions are also passed the next function and need to invoke it to continue the cycle. Hooks : find, save, delete, update. These middleware are of 3 types:
 -> Document - middleware for document related hooks, save, etc.
 -> Query - middleware for query execution related hooks, find, findByIdAndDelete, etc.
--> Aggregate
+-> Aggregate - middleware to be executed before/after aggregation pipeline related operations are performed.
 
 2. Model: wrapper with interface for querying database. Like classes that are a blueprint. Used to create documents and then perform CRUD on them. mongoose.model('name', schema_obj)
 We use schema obj to make a model which is then used to create documents. 
@@ -120,3 +120,7 @@ APIs need several features like pagination, field selection, sorting results, fi
 
 We can make some alias resources available by adding a middleware for this aliased route that would add on all the requirements of this aliased resource point to the request obj so that they can be used when the response is being generated. EX: /top-5-tours can be passed thru a middleware that would add all query parameters to request object to get top 5 tours which will then be sen back as response by the final route handler.
 
+Data Validation:
+Data validation has to be done while defining the schema model. All different types of validators can be used to do so. Custom validators can also be used by specifying the validate prop whose value is a function that should return a boolean. 
+
+Note: NDB is an amazing debugger for node.js code.
