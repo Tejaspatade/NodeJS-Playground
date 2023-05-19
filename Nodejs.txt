@@ -72,6 +72,10 @@ express.Route() is used to make an separate router for a single resource. Mounti
 
 A param middleware is used to process requests that are gonna have some paramater passed in like the id of a resource to retrieve that one item. Use route.param("param_name", (req, res, next, val) => {}) to use this middleware for a certain param. 
 
+Error Handling:
+operational errors are the ones that are bound to happen and out of dev's control(ex:invalid path accessed by user, failed to connect to server, etc). these are the ones that we will handle in express using a global error handling middleware where all these errors get caught.
+Any middleware that passes an argument into the next() function is expected as an error object by express. When passed the error, it skips all middlewares directly to the global error handling middleware.
+
 ---------------------------------------------------------------------
 
 Env Variables:
