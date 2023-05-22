@@ -102,6 +102,8 @@ Schema can also have middleware just like routes in the Request-Response Life-Cy
 -> Query - middleware for query execution related hooks, find, findByIdAndDelete, etc.
 -> Aggregate - middleware to be executed before/after aggregation pipeline related operations are performed.
 
+Note: The callback function being passed can't be an arrow function cuz this keyword for the function points to the document in question. this is going to be useful to access properties of that document.
+
 2. Model: wrapper with interface for querying database. Like classes that are a blueprint. Used to create documents and then perform CRUD on them. mongoose.model('name', schema_obj)
 We use schema obj to make a model which is then used to create documents. 
 
@@ -122,9 +124,16 @@ This model can be used to do all sorts of CRUD operations on MongoDB using its m
 All such functions return a query and if we await a response on this query it is executed on MongoDB and result is returned. Thus, we can chain a several number of these functions to define complex queries. 
 APIs need several features like pagination, field selection, sorting results, filtering results based on field values, etc which can be done by using parameters passed in to req.query from URL. This is perfect example where chaining the mongoose methods specified above and then finally await on the query to get the resultant documents.
 
-We can make some alias resources available by adding a middleware for this aliased route that would add on all the requirements of this aliased resource point to the request obj so that they can be used when the response is being generated. EX: /top-5-tours can be passed thru a middleware that would add all query parameters to request object to get top 5 tours which will then be sen back as response by the final route handler.
+We can make some alias resources available by adding a middleware for this aliased route that would add on all the requirements of this aliased resource point to the request obj so that they can be used when the response is being generated. EX: /top-5-tours can be passed thru a middleware that would add all query parameters to request object to get top 5 tours which will then be sent back as response by the final route handler.
 
 Data Validation:
 Data validation has to be done while defining the schema model. All different types of validators can be used to do so. Custom validators can also be used by specifying the validate prop whose value is a function that should return a boolean. 
 
 Note: NDB is an amazing debugger for node.js code.
+
+Data Authentication:
+Use password and passwordConfirm fields to confirm password inputted. Encrypt password inputted using bcryptjs library. This can be done using Mongoose middleware so that right after a user password is updated or created, it goes thru this middleware its updated to a hashed version for security.
+
+---------------------------------------------------------------------
+
+JSON Web Tokens(JWT):
