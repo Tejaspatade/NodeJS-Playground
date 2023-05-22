@@ -137,3 +137,12 @@ Use password and passwordConfirm fields to confirm password inputted. Encrypt pa
 ---------------------------------------------------------------------
 
 JSON Web Tokens(JWT):
+JWT is simply a string that is used to represent that a valid user is logged in. When user puts in his credentials and they are identitfied as valid at the backend, a unique JWT is created and sent back which is then stored in localStorage/cookies for the user. This acts as a token that the user is logged in. Whenever the user tries to acces some user specific resource, this JWT is used to check whether data should be sent back from the backend and if yes, which user's specific data. JWT acts as a passport that gets you into specific regions where only registered users have access. This helps keep the database stateless, meaning unknown to the no of users that are logged in. This is one of the principles of RESTful APIs. There can be any no of users logged in and the server doesn't need to know about it. It just checks for valid/invalid JWTs when restricted resources are accessed.
+
+A JWT conmprises of 3 parts:
+-> Header: metadata of the token.
+-> Payload: actual info to be exchanged.
+-> Signature: made using header, payload and secret from server. Used to verify the JWT and implement authentication.
+
+Header & Payload fields are encoded fields; meaning anyone can decode and interpret them. The signature however, is encrypted thus no unauthorized person can interpret it.
+The signature coming from a JWT is compare with a test JWT at the server-side creted using the header, payload and secret to make sure the request is coming from a signed in user.
