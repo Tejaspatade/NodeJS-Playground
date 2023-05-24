@@ -145,4 +145,4 @@ A JWT conmprises of 3 parts:
 -> Signature: made using header, payload and secret from server. Used to verify the JWT and implement authentication.
 
 Header & Payload fields are encoded fields; meaning anyone can decode and interpret them. The signature however, is encrypted thus no unauthorized person can interpret it.
-The signature coming from a JWT is compare with a test JWT at the server-side creted using the header, payload and secret to make sure the request is coming from a signed in user.
+The signature coming from a JWT is compare with a test JWT at the server-side creted using the header, payload and secret to make sure the request is coming from a signed in user. We delegate this functionality to the jsonwebtoken npm package.
