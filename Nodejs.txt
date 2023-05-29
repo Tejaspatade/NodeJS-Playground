@@ -151,4 +151,6 @@ The signature coming from a JWT is compare with a test JWT at the server-side cr
 
 A logged in user sends the token in the authorization header of the request. The Value for this header has to be in format of: Bearer token_here. This token indicates that the user trying to acce the resource is logged in. Thus, if absent, the resource can be denied access and asked to log in first. This is Authentication of the user while logging in.
 
-Authorization is a whole different thing wherein we want a specific type of user to access certain protected resource. This is another 
+Authorization is a whole different thing wherein we want a specific type of user to access certain protected resource. This is another security measure.
+
+Note: Only store encrypted sensitive information in the DB like passwords, reset tokens, etc. If ever in case the DB gets breached, they aren't compromised.
