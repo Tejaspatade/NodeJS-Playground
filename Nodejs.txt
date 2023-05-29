@@ -144,7 +144,7 @@ JWT is simply a string that is used to represent that a valid user is logged in.
 A JWT conmprises of 3 parts:
 -> Header: metadata of the token.
 -> Payload: actual info to be exchanged.
--> Signature: made using header, payload and secret from server. Used to verify the JWT and implement authentication.
+--> Signature: made using header, payload and secret from server. Used to verify the JWT and implement authentication.
 
 Header & Payload fields are encoded fields; meaning anyone can decode and interpret them. The signature however, is encrypted thus no unauthorized person can interpret it.
 The signature coming from a JWT is compare with a test JWT at the server-side creted using the header, payload and secret to make sure the request is coming from a signed in user. We delegate this functionality to the jsonwebtoken npm package.
@@ -156,3 +156,12 @@ Authorization is a whole different thing wherein we want a specific type of user
 Note: Only store encrypted sensitive information in the DB like passwords, reset tokens, etc. If ever in case the DB gets breached, they aren't compromised.
 
 A signed in user should always have the token being sent in the request header in the Uthorization field in the format Bearer token. Absence of this indidcates user isnt logged in. this token then can be validated, authenticated and verified if user is logged in or not.
+
+---------------------------------------------------------------------
+
+Security
+-> Compromised Database: Encrypt Passwords with salts & hash(bcryptjs), Encrypt Password Reset Tokens(crypto) 
+-> Brute Force Attacks: Make login requests slower(bcrypt), Rate limiting, Restrict Maximum Login Attempts
+-> Cross Site Scripting Attacks: Store JWT in HTTPOnlyCookie(never in localStorage), Sanitize User Inputs, Set special HTTP Headers.
+-> Denial Of Service Attacks: Rate Limiting, Limit Body payload size, avoid complex regexes.
+-> Use HTTPS, Create reset tokens randomly & set expiry, Deny access to JWT after password change, Dont upload config to Git, 
