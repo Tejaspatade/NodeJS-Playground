@@ -154,3 +154,5 @@ A logged in user sends the token in the authorization header of the request. The
 Authorization is a whole different thing wherein we want a specific type of user to access certain protected resource. This is another security measure.
 
 Note: Only store encrypted sensitive information in the DB like passwords, reset tokens, etc. If ever in case the DB gets breached, they aren't compromised.
+
+A signed in user should always have the token being sent in the request header in the Uthorization field in the format Bearer token. Absence of this indidcates user isnt logged in. this token then can be validated, authenticated and verified if user is logged in or not.
