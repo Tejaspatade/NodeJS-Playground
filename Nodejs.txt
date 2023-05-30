@@ -191,3 +191,5 @@ Data Modelling: understand the different type of unstructured data to be dealt w
 -> Parent: Child references parent, parent is unaware of no. of children. Useful when child documents are unpredictable and grow to a huge amount.
 -> Child: Parent holds reference to all children, useful when children are few, and would probably needed only while accessing the parent doument.
 -> Two-way: Useful for many:many relationships. Both doucments arent quite closely coupled and quite independent.
+
+Referencing can be done by specifying the field in Schema with a type of mongoose.Schema.ObjectId. This helps mongoose recognise that the field takes a document's id. Also specify the ref attribute with the collection to look in.
