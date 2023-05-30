@@ -170,3 +170,24 @@ Rate limiting: express-rate-limit package. Invoke function, pass in options and 
 HTTP Header: helmet package. Adds all secuity related headers essential to safeguard requests that the browser can understand and act on.
 Data Sanitization: express-mongo-sanitize package for NSQL Query Injection Attacks. Removes $ and . from all json strings being parsed so that the queries injected wont work. xss-clean package for cross-site scripting attacks. Scans HTML for malicious code.
 Parameter pollution: hpp package. Removes duplicate params passed in.
+
+---------------------------------------------------------------------
+
+Data Modelling: understand the different type of unstructured data to be dealt with coming from a real world scenario, structurise it in a logical data model.
+
+1) Identify relationships between data: 3 types-
+-> 1:1 - a movie can have only 1 name
+-> 1:Many - 1:Few - movie can win few awards ; 1:Many - movie can have many reviews; 1:Ton - app can have tons of logins
+-> Many:Many - many movies can many actors and vice versa.
+
+2) Referencing(normalization)/Embedding(denormalization): Referenicing means to separate concerns with different data in diff documents, which in turn are then referenced using their ids. This referencing can be of child or parent type. This is how data is stored in SQL. But in NOSQL we have option of storing all related data altogether in one place. This is embedding. With embedding, accessing all related data can be done in single query however, accessing embedded data on its own is not possible. On the other hand, in referencing, accessing individual data is easier but to access all referenced data requires more queries.
+
+3) Embedding/Referencing: Use 3 criterias
+-> Relationship type: If the related data is smaller in size then can be stored together(embedding). However if its very large then should be normalized.
+-> Data Access patterns: Analyse the read:write ratio. If the data is mostly going to be read, embedding will help reduce querying times drastically. However, data thats gonna be having frequesnt updates should be referenced and not embedded.
+-> Data Closeness: Closeness in the data relations, will they be needed together or would they be required to be accessed on their own as well.
+
+4) Types of Referencing: Upon Choosing to reference relationships while data modelling, 3 types of referencings are possible:
+-> Parent: Child references parent, parent is unaware of no. of children. Useful when child documents are unpredictable and grow to a huge amount.
+-> Child: Parent holds reference to all children, useful when children are few, and would probably needed only while accessing the parent doument.
+-> Two-way: Useful for many:many relationships. Both doucments arent quite closely coupled and quite independent.
