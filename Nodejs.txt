@@ -164,4 +164,9 @@ Security
 -> Brute Force Attacks: Make login requests slower(bcrypt), Rate limiting, Restrict Maximum Login Attempts
 -> Cross Site Scripting Attacks: Store JWT in HTTPOnlyCookie(never in localStorage), Sanitize User Inputs, Set special HTTP Headers.
 -> Denial Of Service Attacks: Rate Limiting, Limit Body payload size, avoid complex regexes.
--> Use HTTPS, Create reset tokens randomly & set expiry, Deny access to JWT after password change, Dont upload config to Git, 
+-> Use HTTPS, Create reset tokens randomly & set expiry, Deny access to JWT after password change, Dont upload config to Git.
+
+Rate limiting: express-rate-limit package. Invoke function, pass in options and pass in as middleware.
+HTTP Header: helmet package. Adds all secuity related headers essential to safeguard requests that the browser can understand and act on.
+Data Sanitization: express-mongo-sanitize package for NSQL Query Injection Attacks. Removes $ and . from all json strings being parsed so that the queries injected wont work. xss-clean package for cross-site scripting attacks. Scans HTML for malicious code.
+Parameter pollution: hpp package. Removes duplicate params passed in.
