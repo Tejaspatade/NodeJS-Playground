@@ -104,7 +104,8 @@ Schema can also have middleware just like routes in the Request-Response Life-Cy
 
 Note: The callback function being passed can't be an arrow function cuz this keyword for the function points to the document in question. this is going to be useful to access properties of that document.
 
-We can define utility functions called instance methodson the schema which will then be available for all documents created using that schema.
+We can define utility functions called instance methods on the schema which will then be available for all documents created using that schema.
+Similarly, static methods can also be defined on a schema that can be invoked directly using Model created using that schema. Its exactly how class static methods work. 
 
 2. Model: wrapper with interface for querying database. Like classes that are a blueprint. Used to create documents and then perform CRUD on them. mongoose.model('name', schema_obj)
 We use schema obj to make a model which is then used to create documents. 
