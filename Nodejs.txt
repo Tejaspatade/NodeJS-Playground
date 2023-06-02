@@ -194,3 +194,10 @@ Data Modelling: understand the different type of unstructured data to be dealt w
 -> Two-way: Useful for many:many relationships. Both doucments arent quite closely coupled and quite independent.
 
 Referencing can be done by specifying the field in Schema with a type of mongoose.Schema.ObjectId. This helps mongoose recognise that the field takes a document's id. Also specify the ref attribute with the collection to look in.
+
+---------------------------------------------------------------------
+
+Server Side Rendering Using Pug Templates:
+Pug: Its a simple whitespace sensitive syntax for writing html. It allows to generate dynamic html templated which can then be sent as a response to be rendered to the client. Express.js can be used with pug by setting it as the view engine. This tells express to handle render() responses using pug templates located at the path specified. Pug templates support dynamic content and can receive data from the server, allowing you to create dynamic web pages with ease.
+
+Simple JavaScript can be executed in pug templates as well. Simple HTML can also be included in it. It works completely on spaces & tab indentations. Interpolation syntax includes using #{var} for inserting variable data into the template
