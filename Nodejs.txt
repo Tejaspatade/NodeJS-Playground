@@ -22,6 +22,8 @@ require():
 4. Returns exports
 5. Caching.
 
+Tip: Put all dependencies being imported from a module in the require() statement itslef which helps keeping track of exactly what dependencies we are using.
+
 ---------------------------------------------------------------------
 
 Static vs Dynamic vs API:
