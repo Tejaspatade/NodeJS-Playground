@@ -1,7 +1,6 @@
 Node.js is a JS runtime run on server side using Google Chrome's V8 Engine.
 Used for fast and scalable data driven apps. It is a single threaded, non blocking I/O model,  event driven.
 
-
 Event driven architecture means any significant action leads to an event emitter emitting an event. Event loop then picks up these events and calls respective callback functions attached to them.
 
 Synchronous code is blocking code as its executed line by line. Every file is treated as a module. Node.js is dependent on V8 and Libuv(C++ based f/w). Libuv provides a thread pool where heavy and time consuming tasks are offloaded so as to not block the single main thread.
